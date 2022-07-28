@@ -8,12 +8,27 @@ const overlayBackground=document.querySelector(".overlay_background");
 const resultsScreen = document.querySelector(".results_container");
 const nextTurnBtn = document.querySelector('.btn-replay')
 const quitBtn = document.querySelector('.btn-quit');
+const winnerMsg = resultsScreen.querySelector('p')
 let turnsCounter=0;
+let isTie = false;
 let gameEnd = false;
 function displayResults(){
     overlayBackground.classList.remove('invisible')
     resultsScreen.classList.remove('invisible')
+    if(!isTie){
+        winnerMsg.innerHTML = `<span>${turn}</span> player won`
+    }
+    else winnerMsg.innerText ="It's a tie"
+
 }
+quitBtn.addEventListener('click',()=>{
+    reset(gridCells)
+    tiesRes.innerText=0
+    xPlayerRes.innerText=0
+    oPlayerRes.innerText=0
+    overlayBackground.classList.add('invisible');
+    resultsScreen.classList.add('invisible');
+})
 nextTurnBtn.addEventListener("click", ()=>{
 reset(gridCells)
 overlayBackground.classList.add('invisible');
@@ -35,6 +50,13 @@ gridCells.forEach((grid,i,grids)=>{
             gameEnd=true
         }
     }
+    //Check for tie
+    if(turnsCounter===9){
+        isTie=true
+        displayResults()
+        tiesRes.innerText=Number(tiesRes.innerText)+1
+    }
+    // Check for winner
     if(!gameEnd){
     rotateTurn()
     playerTurn.innerText=`${turn} turn`
@@ -46,10 +68,6 @@ gridCells.forEach((grid,i,grids)=>{
         else oPlayerRes.innerText=Number(oPlayerRes.innerText)+1
         displayResults()
     }
-    if(turnsCounter===9){
-        displayResults()
-        tiesRes.innerText=Number(tiesRes.innerText)+1
-    }
 }
     });
 })
@@ -57,7 +75,9 @@ function reset(grids){
     grids.forEach(grid => {grid.innerText=''})
     turnsCounter=0
     gameEnd=false
+    isTie=false
     playerTurn.innerText='X turn'
+
     
 }
 function rotateTurn(){
