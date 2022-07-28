@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+    <div class="overlay_background invisible"></div>
+    <div class="results_container flex invisible">
+    <div class="winner_result">
+    <p class="winner_text"><span>X</span>
+     player won</p>
+    <button class="btn btn-replay">
+        Next Round
+    </button>
+    <button class="btn btn-quit">
+        Quit
+    </button>
+</div>
+    </div>
+
+    <div class="container">
+    <div class="game_header flex">
+        <div class="logo">
+            <span>X</span>
+            <span>O</span>
+        </div>
+        <div class="game_turn">
+            <span>X</span>
+            <span>turn</span>
+        </div>
+        <button class="btn replay-button">
+<i class="fa fa-reply"></i>
+        </button>
+    </div>
+    <div class="game_grid flex">
+        <div class="grid_cell flex">
+        </div>
+        <div class="grid_cell flex"></div>
+        <div class="grid_cell flex"></div>
+        <div class="grid_cell flex"></div>
+        <div class="grid_cell flex"></div>
+        <div class="grid_cell flex"></div>
+        <div class="grid_cell flex"></div>
+        <div class="grid_cell flex"></div>
+        <div class="grid_cell flex"></div>
+    </div>
+    <div class="game_footer flex">
+        <div class="x_player_wins flex">
+            <span class="res_title">X</span>
+            <span class="result">0</span>
+        </div>
+        <div class="ties flex">
+            <span class="res_title">Ties</span>
+            <span class="result">0</span>
+        </div>
+        <div class="o_player_wins flex">
+            <span class="res_title">O</span>
+            <span class="result">0</span>
+        </div>
+    </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
